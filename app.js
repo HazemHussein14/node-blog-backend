@@ -12,10 +12,6 @@ const graphqlResolver = require("./graphql/resolvers");
 const auth = require("./middleware/is-auth");
 const { clearImage } = require("./utils/file");
 
-const helmet = require("helmet");
-const compression = require("compression");
-const morgan = require("morgan");
-
 const app = express();
 
 const fileStorage = multer.diskStorage({
@@ -38,9 +34,6 @@ const fileFilter = (req, file, cb) => {
     cb(null, false);
   }
 };
-
-app.use(helmet());
-app.use(compression());
 
 app.use(express.json());
 app.use(
